@@ -1,0 +1,79 @@
+<div class="container mt-4" th:fragment="formularioAdminModificarSupermercado">
+    <a class="btn btn-secondary" th:href="@{/admin/supermercados}" th:text="#{supermarket.modify.back}"></a>
+    <br><br>
+    <form th:action="@{/admin/supermercados/actualizar}" method="post" th:object="${supermercado}"
+          enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+
+        <!-- Campos del supermercado -->
+        <div class="mb-3">
+            <label for="nombreSuper" class="form-label" th:text="#{supermarket.modify.name}">
+            </label>
+            <input type="text" th:field="*{nombreSuper}" id="nombreSuper" class="form-control" required>
+            <div th:if="${#fields.hasErrors('nombreSuper')}" class="text-danger">
+                <span th:errors="*{nombreSuper}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="url" class="form-label" th:text="#{supermarket.modify.url}"></label>
+            <input type="url" th:field="*{url}" id="url" class="form-control" required>
+            <div th:if="${#fields.hasErrors('url')}" class="text-danger">
+                <span th:errors="*{url}"></span>
+            </div>
+        </div>
+
+        <!-- Campo para subir nuevas imágenes -->
+        <div class="mb-3">
+            <label for="imagenesArchivo" class="form-label" th:text="#{supermarket.modify.uploadImage}"></label>
+            <input type="file" id="imagenesArchivo" th:field="*{imagenesArchivo}" class="form-control">
+            <div th:if="${#fields.hasErrors('imagenesArchivo')}" class="text-danger">
+                <span th:errors="*{imagenesArchivo}"></span>
+            </div>
+        </div>
+
+        <!-- Campos adicionales -->
+        <div class="mb-3">
+            <label for="horario" class="form-label" th:text="#{supermarket.details.schedule}"></label>
+            <input type="text" th:field="*{horario}" id="horario" class="form-control" required>
+            <div th:if="${#fields.hasErrors('horario')}" class="text-danger">
+                <span th:errors="*{horario}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="calle" class="form-label" th:text="#{supermarket.modify.street}"></label>
+            <input type="text" th:field="*{calle}" id="calle" class="form-control" required>
+            <div th:if="${#fields.hasErrors('calle')}" class="text-danger">
+                <span th:errors="*{calle}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="municipio" class="form-label" th:text="#{supermarket.modify.city}"></label>
+            <input type="text" th:field="*{municipio}" id="municipio" class="form-control" required>
+            <div th:if="${#fields.hasErrors('municipio')}" class="text-danger">
+                <span th:errors="*{municipio}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="pais" class="form-label" th:text="#{supermarket.modify.country}">País</label>
+            <input type="text" th:field="*{pais}" id="pais" class="form-control" required>
+            <div th:if="${#fields.hasErrors('pais')}" class="text-danger">
+                <span th:errors="*{pais}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="codigopostal" class="form-label" th:text="#{supermarket.modify.postalCode}"></label>
+            <input type="number" th:field="*{codigopostal}" id="codigopostal" class="form-control" required>
+            <div th:if="${#fields.hasErrors('codigopostal')}" class="text-danger">
+                <span th:errors="*{codigopostal}"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" th:text="#{supermarket.modify.save}"></button>
+    </form>
+
+</div>

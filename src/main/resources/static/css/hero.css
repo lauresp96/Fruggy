@@ -1,0 +1,153 @@
+/*---------------------
+  Hero
+-----------------------*/
+
+/* Contenedor principal del Hero */
+.hero {
+    padding-bottom: 50px;
+    background-color: #4CAF50; /* Cambia este color a uno que se adapte mejor al estilo de tu página */
+    margin-bottom: 30px; /* Espacio externo inferior */
+}
+
+/* Categorías */
+.hero__categories {
+    position: relative; /* Asegura que el menú desplegable se posicione correctamente */
+}
+
+.hero__categories__all {
+    background: steelblue;
+    padding: 10px 25px 10px 40px;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.hero__categories__all:hover {
+    background-color: #323F5B;
+}
+
+.hero__categories__all i {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.hero__categories__all span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Menú desplegable de categorías */
+.hero__categories ul {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #ebebeb;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1050; /* Asegura que el menú desplegable esté por encima de otros elementos */
+}
+
+.hero__categories ul li {
+    list-style: none;
+}
+
+.hero__categories ul li a {
+    font-size: 16px;
+    color: #1c1c1c;
+    line-height: 1.5;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.hero__categories ul li a:hover {
+    color: steelblue;
+    background-color: #f5f5f5;
+}
+
+/* Búsqueda */
+.hero__search {
+    margin-top: 30px;
+}
+
+.hero__search__form {
+    display: flex;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.hero__search__form form {
+    display: flex;
+    width: 100%;
+}
+
+.hero__search__categories {
+    flex: 1;
+    font-size: 16px;
+    color: #1c1c1c;
+    font-weight: 700;
+    padding: 15px;
+    border-right: 1px solid #ebebeb;
+}
+
+.hero__search__categories span {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.hero__search__form input {
+    flex: 3;
+    border: none;
+    height: 50px;
+    font-size: 16px;
+    color: #b2b2b2;
+    padding-left: 20px;
+    border-right: 1px solid #ebebeb;
+}
+
+.hero__search__form input::placeholder {
+    color: #b2b2b2;
+}
+
+.hero__search__form button {
+    flex: 1;
+    height: 50px;
+    background-color: steelblue;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hero__search__form button:hover {
+    background-color: #323F5B;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .hero__search__form {
+        flex-direction: column;
+    }
+
+    .hero__search__categories {
+        border-right: none;
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    .hero__search__form input {
+        border-bottom: 1px solid #ebebeb;
+    }
+}

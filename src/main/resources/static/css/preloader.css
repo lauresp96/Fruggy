@@ -1,0 +1,47 @@
+#preloder {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999; /* Asegúrate de que el z-index sea suficientemente alto para cubrir todo */
+    background: white;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border: 10px solid rgba(0, 0, 0, 0.6);
+    border-top-color: #3E8E41;
+    border-radius: 50%;
+    animation: rotate 1.3s infinite linear;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px; /* Ajusta el margen para centrar el loader */
+    margin-left: -50px;
+}
+
+/* Animación */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+        border: 4px solid #249BC8;
+        border-left-color: transparent;
+    }
+    50% {
+        transform: rotate(180deg);
+        border: 4px solid #3CC032;
+        border-left-color: transparent;
+    }
+    100% {
+        transform: rotate(360deg);
+        border: 4px solid #f44336;
+        border-left-color: transparent;
+    }
+}

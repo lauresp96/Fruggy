@@ -1,0 +1,133 @@
+<section class="user-creation spad" th:fragment="formularioAdminCrearUsuario">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2 th:text="#{create_user}">Create User</h2>
+                </div>
+                <!-- Formulario de Creación de Usuario -->
+                <div class="user__creation__form" id="usuarioForm">
+                    <form th:action="@{/admin/usuarios/guardar}" method="post" th:object="${usuario}">
+                        <div class="row">
+                            <!-- Campo de email -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{email}" class="form-control"
+                                       th:placeholder="#{email_placeholder}" required>
+                                <div th:if="${#fields.hasErrors('email')}" class="alert alert-danger">
+                                    <p th:each="err : ${#fields.errors('email')}" th:text="${err}"></p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="password" th:field="*{password}" class="form-control"
+                                       th:placeholder="#{password_placeholder}" required>
+                                <div th:if="${#fields.hasErrors('password')}" class="alert alert-danger">
+                                    <p th:each="err : ${#fields.errors('password')}" th:text="${err}"></p>
+                                </div>
+                            </div>
+
+                            <!-- Checkbox activo -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <div class="form-check">
+                                    <input type="checkbox" th:field="*{active}" class="form-check-input">
+                                    <label class="form-check-label" th:text="#{active_label}"></label>
+                                </div>
+                            </div>
+
+                            <!-- Campo de teléfono -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{telefono}" class="form-control"
+                                       th:placeholder="#{phone_placeholder}">
+                                <div th:if="${#fields.hasErrors('telefono')}" class="alert alert-danger">
+                                    <p th:each="err : ${#fields.errors('telefono')}" th:text="${err}"></p>
+                                </div>
+                            </div>
+
+                            <!-- Selección de roles -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <select class="form-control" th:field="*{roles}" multiple required>
+                                    <option th:each="rol : ${roles}"
+                                            th:value="${rol.id}"
+                                            th:text="${rol.rolNombre}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- Campo de nombre de usuario -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{detalle.nombreUsuario}" class="form-control"
+                                       th:placeholder="#{username_placeholder}" required>
+                            </div>
+
+                            <!-- Campo de nombre -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{detalle.nombre}" class="form-control"
+                                       th:placeholder="#{first_name_placeholder}" required>
+                            </div>
+
+                            <!-- Campo de apellido -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{detalle.apellido}" class="form-control"
+                                       th:placeholder="#{last_name_placeholder}" required>
+                            </div>
+
+                            <!-- Campo de edad -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="number" th:field="*{detalle.edad}" class="form-control"
+                                       th:placeholder="#{age_placeholder}" required>
+                            </div>
+
+                            <!-- Campo de calle -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{detalle.calle}" class="form-control"
+                                       th:placeholder="#{street_placeholder}">
+                            </div>
+
+                            <!-- Campo de municipio -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{detalle.municipio}" class="form-control"
+                                       th:placeholder="#{city_placeholder}">
+                            </div>
+
+                            <!-- Campo de país -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="text" th:field="*{detalle.pais}" class="form-control"
+                                       th:placeholder="#{country_placeholder}">
+                            </div>
+
+                            <!-- Campo de código postal -->
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <input type="number" th:field="*{detalle.codigopostal}" class="form-control"
+                                       th:placeholder="#{postal_code_placeholder}">
+                            </div>
+
+                            <!-- Selección de Género -->
+                            <div class="mb-3">
+                                <label for="generoId" class="form-label" th:text="#{gender_label}"></label>
+                                <select id="generoId" th:field="*{detalle.genero.id}" class="form-select" required>
+                                    <option value="" disabled selected th:text="#{select_gender}"></option>
+                                    <option th:each="genero : ${generos}"
+                                            th:value="${genero.id}"
+                                            th:text="${#fields.hasErrors('detalle.genero.id') ? 'error' : (idioma == 'es' ? genero.esDesc : genero.enDesc)}">
+                                    </option>
+                                </select>
+                                <div th:if="${#fields.hasErrors('detalle.genero.id')}" class="alert alert-danger">
+                                    <p th:each="err : ${#fields.errors('detalle.genero.id')}" th:text="${err}"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Botón de guardar -->
+                        <div class="col-lg-12 mb-3">
+                            <button type="submit" class="btn btn-primary" th:text="#{save_button}"></button>
+                        </div>
+                    </form>
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <span th:text="${error}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

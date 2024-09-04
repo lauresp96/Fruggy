@@ -1,0 +1,86 @@
+<div class="container mt-4" th:fragment="detalle-cesta">
+    <!-- Ocultar el ID de la cesta y el ID del usuario -->
+    <input type="hidden" id="cestaId" th:value="${cesta.id}"/>
+    <input type="hidden" id="usuarioId" th:value="${cesta.usuario.id}"/>
+
+    <h1 th:text="#{basket.details.title}"></h1>
+    <p><strong th:text="#{basket.product.name}"></strong> <span th:text="${cesta.nombre}"></span></p>
+
+    <h3 th:text ="#{products.inside.basket}"></h3>
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th th:text="#{basket.product.name}"></th>
+            <th th:text="#{basket.product.description}"></th>
+            <th th:text="#{basket.product.price}"></th>
+            <th th:text="#{basket.product.supermarket}"></th>
+            <th th:text="#{basket.product.quantity}"></th>
+            <th th:text="#{basket.product.total}"></th>
+            <th th:text="#{basket.product.delete}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="productoEnCesta : ${cesta.productosEnCesta}">
+            <td th:text="${productoEnCesta.producto.nombreProducto}"></td>
+            <td th:text="${productoEnCesta.producto.descripcion}"></td>
+            <td>
+                <span th:if="${productoEnCesta.producto.descuentos.size() > 0}">
+                    <span th:each="descuento : ${productoEnCesta.producto.descuentos}">
+                        <span th:if="${descuento.activo}">
+                            <span th:text="${#numbers.formatDecimal(productoEnCesta.producto.precios[0].valor * (1 - descuento.porcentaje / 100), 1, 2) + ' € (' + descuento.porcentaje + '% de descuento)'}"></span>
+                        </span>
+                    </span>
+                </span>
+                <span th:if="${productoEnCesta.producto.descuentos.size() == 0}"
+                      th:text="${#numbers.formatDecimal(productoEnCesta.producto.precios[0].valor, 1, 2) + ' €'}"></span>
+            </td>
+            <td th:text="${productoEnCesta.producto.precios[0].supermercado.nombreSuper + ' (' + productoEnCesta.producto.precios[0].supermercado.municipio + ')'}">
+                Supermercado
+            </td>
+            <td>
+                <form th:action="@{/cestas/{cestaId}/actualizarCantidad(cestaId=${cesta.id})}" method="post"
+                      style="display:inline;"
+                      onsubmit="return confirm('#{basket.confirm.update}');">
+                    <input type="hidden" name="productoId" th:value="${productoEnCesta.producto.id}"/>
+                    <input type="number" name="cantidad" min="0" th:value="${productoEnCesta.cantidad}"
+                           class="form-control form-control-sm" onchange="this.form.submit()"/>
+                </form>
+            </td>
+            <td>
+                <span th:if="${productoEnCesta.producto.descuentos.size() > 0}">
+                    <span th:each="descuento : ${productoEnCesta.producto.descuentos}">
+                        <span th:if="${descuento.activo}">
+                            <span th:text="${#numbers.formatDecimal((productoEnCesta.producto.precios[0].valor * (1 - descuento.porcentaje / 100)) * productoEnCesta.cantidad, 1, 2) + ' €'}"></span>
+                        </span>
+                    </span>
+                </span>
+                <span th:if="${productoEnCesta.producto.descuentos.size() == 0}"
+                      th:text="${#numbers.formatDecimal(productoEnCesta.producto.precios[0].valor * productoEnCesta.cantidad, 1, 2) + ' €'}"></span>
+            </td>
+            <td>
+                <form th:action="@{/cestas/{cestaId}/eliminarProducto(cestaId=${cesta.id})}" method="post"
+                      onsubmit="return confirm('#{basket.confirm.delete}');">
+                    <input type="hidden" name="productoId" th:value="${productoEnCesta.producto.id}"/>
+                    <button type="submit" class="btn btn-danger btn-sm" th:text="#{basket.product.delete}">
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-end"><strong th:text="#{basket.total}"></strong></td>
+            <td>
+                <span th:text="${#numbers.formatDecimal(total, 1, 2) + ' €'}"></span>
+            </td>
+            <td></td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <a class="btn btn-secondary mt-3" th:href="@{/cestas}" th:text="#{basket.back}"></a>
+</div>
+
+
+

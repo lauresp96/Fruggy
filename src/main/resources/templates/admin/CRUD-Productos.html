@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{admin.product.list.title}">Lista de Productos - Admin</title>
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4" layout:fragment="content">
+    <h1 th:text="#{admin.product.list.header}">Lista de Productos</h1>
+    <a class="btn btn-primary mb-3" th:href="@{/admin/productos/agregar}" th:text="#{admin.product.create}">Crear Producto</a>
+        <div th:replace="fragments/productos/tablaAdminProductos :: tablaAdminProductos"></div>
+    </div>
+        <p th:text="#{admin.product.empty}">La lista de productos está vacía</p>
+    </div>
+
+</div>
+</body>
+</html>

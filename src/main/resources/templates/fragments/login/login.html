@@ -1,0 +1,39 @@
+<div class="login-container" th:fragment="login">
+    <form class="login-form" action="/login" method="post">
+        <div class="logo">
+            <a href="/">
+                <img src="/img/logo.png" alt="Fruggy" width="200" height="200"/>
+            </a>
+        </div>
+
+        <h2 th:text="#{login.title}">Iniciar sesión</h2>
+
+        <div class="input-group">
+            <label for="email" th:text="#{login.email}"></label>
+            <input type="email" id="email" name="username" required th:placeholder="#{login.email}"
+                   placeholder="Introduce tu correo electrónico">
+        </div>
+
+        <div class="input-group">
+            <label for="password" th:text="#{login.password}"></label>
+            <input type="password" id="password" name="password" required th:placeholder="#{login.password}"
+                   placeholder="Introduce tu contraseña">
+        </div>
+
+        <button type="submit" th:text="#{login.submit}"></button>
+
+        <div class="links">
+            <a th:href="@{/registro}" th:text="#{login.register}"></a>
+        </div>
+        <div class="language-switcher">
+            <a th:href="@{/language/es(redirect=${currentUrl})}" th:text="#{language.spanish}"
+               class="language-button"></a>
+            <a th:href="@{/language/en(redirect=${currentUrl})}" th:text="#{language.english}"
+               class="language-button"></a>
+        </div>
+        <!-- Mensaje de error -->
+        <div class="error-message" th:if="${error}" th:text="${error}"></div>
+
+    </form>
+</div>
+

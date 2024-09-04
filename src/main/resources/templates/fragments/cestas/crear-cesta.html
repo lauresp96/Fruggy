@@ -1,0 +1,29 @@
+<div th:fragment="crear-cesta">
+    <h1 th:text="#{basket.create.title}">Crear Nueva Cesta</h1>
+    <form th:action="@{/cestas/guardar}" method="post" th:object="${cesta}">
+        <input type="hidden" name="productoId" th:value="${param.productoId}"/>
+
+        <label for="nombre" th:text="#{basket.create.name.label}"></label>
+        <input type="text" id="nombre" th:field="*{nombre}" required/>
+
+        <button type="submit" th:text="#{basket.create.submit}"></button>
+
+        <!-- Mostrar errores generales -->
+        <div th:if="${param.error}" class="alert alert-danger">
+            <p th:text="#{basket.create.error.general}"></p>
+        </div>
+
+        <!-- Mostrar errores de validación -->
+        <div th:if="${#fields.hasErrors('nombre')}" class="alert alert-danger">
+            <p th:each="err : ${#fields.errors('nombre')}" th:text="${err}"></p>
+        </div>
+
+        <!-- Mostrar mensajes de éxito -->
+        <div th:if="${param.success}" class="alert alert-success">
+            <p th:text="#{basket.create.success}"></p>
+        </div>
+
+        <a href="/cestas" th:text="#{basket.create.back}"></a>
+    </form>
+</div>
+

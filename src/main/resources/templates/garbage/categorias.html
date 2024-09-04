@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mostrar categorias</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styleCatalogo.css" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- hide/show buttons "Descuentos" -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#hide").click(function () {
+                $(".product__discount").hide();
+            });
+            $("#show").click(function () {
+                $(".product__discount").show();
+            });
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <!-- logo empresa-->
+            <a href="#"><img src="../img/logo.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">arículo: <span>150.00€</span></div>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="../img/Spanish.PNG" alt="">
+                <div>Español</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Acceso </a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="../inicio.html">Inicio </a></li>
+                <li><a href="./shop-grid.html">Categorias</a></li>
+                <li><a href="#">Páginas</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="cesta-detalles.html">Shop Details</a></li>
+                        <li><a href="cesta.html">Shoping Cart</a></li>
+                        <li><a href="revisar/checkout.html">Check Out</a></li>
+                        <li><a href="../blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <!-- AÑADIR vinculo a correo*** -->
+                <li><i class="fa fa-envelope"></i> mostrarcategorias@mihai.com</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> mostrarcategorias@mihai.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="../img/Spanish.PNG" alt="">
+                                <div>Español</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Español</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Acceso </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="../inicio.html"><img src="../img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="../inicio.html">Inicio</a></li>
+                            <li class="active"><a href="./categorias.html">Categorias</a></li>
+                            <li><a href="#">Páginas</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="cesta-detalles.html">Shop Details</a></li>
+                                    <li><a href="cesta.html">Shoping Cart</a></li>
+                                    <li><a href="revisar/checkout.html">Check Out</a></li>
+                                    <li><a href="../blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../blog.html">Blog</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        </ul>
+                        <div class="header__cart__price">artículos: <span>150.00€</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Categorías</span>
+                        </div>
+                        <ul>
+                            <li><a href="catalogo_categorias/Categoría_aperitivos.html">Aperitivos</a></li>
+                            <li><a href="catalogo_categorias/Categoria_bazar_casa.html">Bazar & Casa</a></li>
+                            <li><a href="catalogo_categorias/Categoria_bébes_niños.html">Bébes & Niños</a></li>
+                            <li><a href="catalogo_categorias/Categoria_bebidas.html">Bebidas</a></li>
+                            <li><a href="catalogo_categorias/Categoría_cafe_infusiones.html">Café e Infusiones</a></li>
+                            <li><a href="catalogo_categorias/Categoría_chocolate_dulce.html">Chocolates & Dulces</a></li>
+                            <li><a href="../Categoria_conservas,_aceite%20_condimentos.html">Conservas, Aceite & Condimentos</a></li>
+                            <li><a href="catalogo_categorias/Categoria_dieteticos.html">Diéteticos</a></li>
+                            <li><a href="catalogo_categorias/Categoria_drogueria.html">Droguería</a></li>
+                            <li><a href="catalogo_categorias/Categoría_frescos_charcutería.html">Frescos & Charcutería</a></li>
+                            <li><a href="catalogo_categorias/Categoría_lacteos_huevos.html">Lácteos & Huevos</a></li>
+                            <li><a href="catalogo_categorias/Categoría_lacteos_huevos.html">Mascotas</a></li>
+                            <li><a href="catalogo_categorias/Categoría_ocio_cultura.html">Ocio y Cultura</a></li>
+                            <li><a href="catalogo_categorias/Categoría_panadería_bollería_pastelería.html">Panadería, Bollería y
+                                Pastelería</a></li>
+                            <li><a href="catalogo_categorias/Categoría_pasta_arroz_legumbres.html">Pasta, Arroz & Legumbres</a></li>
+                            <li><a href="../Categoría_permueria_%20parafarmacia.html">Perfumería & Parafarmacia</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    Todas las categorías
+                                    <!-- AÑADIR AQUÍ UNA LISTA  -->
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="¿Qué necesitas?">
+                                <button type="submit" class="site-btn">BUSCAR</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+34 610 988 345</h5>
+                                <span>Servicio 24h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>FRUGGY</h2>
+                        <div class="breadcrumb__option">
+                            <a href="../inicio.html">INICIO</a>
+                            <span>Categorias</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Categorías</h4>
+                            <ul>
+                                <li><a href="catalogo_categorias/Categoría_aperitivos.html">Aperitivos</a></li>
+                            <li><a href="catalogo_categorias/Categoria_bazar_casa.html">Bazar & Casa</a></li>
+                            <li><a href="catalogo_categorias/Categoria_bébes_niños.html">Bébes & Niños</a></li>
+                            <li><a href="catalogo_categorias/Categoria_bebidas.html">Bebidas</a></li>
+                            <li><a href="catalogo_categorias/Categoría_cafe_infusiones.html">Café e Infusiones</a></li>
+                            <li><a href="catalogo_categorias/Categoría_chocolate_dulce.html">Chocolates & Dulces</a></li>
+                            <li><a href="../Categoria_conservas,_aceite%20_condimentos.html">Conservas, Aceite & Condimentos</a></li>
+                            <li><a href="catalogo_categorias/Categoria_dieteticos.html">Diéteticos</a></li>
+                            <li><a href="catalogo_categorias/Categoria_drogueria.html">Droguería</a></li>
+                            <li><a href="catalogo_categorias/Categoría_frescos_charcutería.html">Frescos & Charcutería</a></li>
+                            <li><a href="catalogo_categorias/Categoría_lacteos_huevos.html">Lácteos & Huevos</a></li>
+                            <li><a href="catalogo_categorias/Categoría_lacteos_huevos.html">Mascotas</a></li>
+                            <li><a href="catalogo_categorias/Categoría_ocio_cultura.html">Ocio y Cultura</a></li>
+                            <li><a href="catalogo_categorias/Categoría_panadería_bollería_pastelería.html">Panadería, Bollería y
+                                Pastelería</a></li>
+                            <li><a href="catalogo_categorias/Categoría_pasta_arroz_legumbres.html">Pasta, Arroz & Legumbres</a></li>
+                            <li><a href="../Categoría_permueria_%20parafarmacia.html">Perfumería & Parafarmacia</a></li>
+                            
+                            </ul>
+                        </div>
+                        <div class="sidebar__item">
+                            <h4>Precio</h4>
+                            <div class="price-range-wrap">
+                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                    data-min="10" data-max="540">
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                </div>
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <input type="text" id="minamount">
+                                        <input type="text" id="maxamount">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar__item sidebar__item__color--option">
+                            <h4>Marcas</h4>
+                            <div class="sidebar__item__color sidebar__item__color--blue">
+                                <label for="blue">
+                                    Carrefour
+                                    <input type="radio" id="blue">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--green">
+                                <label for="green">
+                                    Hacendado
+                                    <input type="radio" id="green">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--red">
+                                <label for="red">
+                                    Día
+                                    <input type="radio" id="red">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--white">
+                                <label for="white">
+                                    Lidl
+                                    <input type="radio" id="white">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--yellow">
+                                <label for="yellow">
+                                    Supeco
+                                    <input type="radio" id="yellow">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--olivegreen">
+                                <label for="olivegreen">
+                                    Hipercor
+                                    <input type="radio" id="olivegreen">
+                                </label>
+                            </div>
+
+                        </div>
+
+
+                        <div class="sidebar__item">
+                            <div class="latest-product__text">
+                                <h4>Reciente </h4>
+                                    <div class="latest-product">
+                                        <div class="latest-product__item">
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="../img/latest-product/lp-1.jpg" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>Lechuga</h6>
+                                                    <h7 id="mercadona">Hacendado - Mercadona </h7>
+                                                    <span>1.00€</span>
+                                                    <span class="paquete"> 800 g </span>
+                                                    <span class="kg"> 1,80€/kg</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="../img/latest-product/lp-2.jpg" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>Pimientos</h6>
+                                                    <h7 id="carrefour">Carrefour </h7>
+                                                    <span>1.30€</span>
+                                                    <span class="paquete"> 500 g </span>
+                                                    <span class="kg"> 2,60€/kg</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="../img/latest-product/lp-3.jpg" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>Muslitos de pollo</h6>
+                                                    <h7 id="lidl">Lidl </h7>
+                                                    <span>2,50€</span>
+                                                    <span class="paquete"> 500 g </span>
+                                                    <span class="kg"> 5,00€/kg</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="latest-prdouct__slider__item">
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="../img/product/milk.jpg" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>Leche</h6>
+                                                    <h7 id="supeco">Supeco </h7>
+                                                    <span>1.10€</span>
+                                                    <span class="paquete"> 1 l </span>
+                                                    <span class="kg"> 1,10€/kg</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="../img/product/filete%20ternera.jpg" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>Filetes de ternera</h6>
+                                                    <h7 id="dia">Día </h7>
+                                                    <span>5,00€</span>
+                                                    <span class="paquete"> 500 g </span>
+                                                    <span class="kg"> 10,00€/kg</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="../img/product/PASTA.jpg" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>Pasta Garofalo</h6>
+                                                    <h7 id="hipercor">Hipercor </h7>
+                                                    <span>1,29€</span>
+                                                    <span class="kg"> 1,79€/kg</span>
+                                                </div>
+                                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-7">
+            <button id="hide">Ocultar descuentos </button>
+            <button id="show">Mostrar descuentos </button>
+            <div class="product__discount">
+                <div class="section-title product__discount__title">
+                    <h2>Descuentos flash</h2>
+                </div>
+                <div class="row">
+                    <div class="product__discount__slider owl-carousel">
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="img/product/discount/pd-1.jpg">
+                                    <div class="product__discount__percent">-20%</div>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <span>Fruta Seca</span>
+                                    <h5><a href="#">Aperitivos</a></h5>
+                                    <h7>Hipercor </h7>
+                                    <div class="product__item__price">2,00€ <span>2,50</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="img/product/discount/pd-2.jpg">
+                                    <div class="product__discount__percent">-30%</div>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <span>Platanos Canarias</span>
+                                    <h5><a href="#">Frutas</a></h5>
+                                    <h7>Mercadona </h7>
+                                    <div class="product__item__price"> 3,00€ <span>$3,90</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="img/product/discount/pd-3.jpg">
+                                    <div class="product__discount__percent">-12%</div>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <span>Zumo de Frutas</span>
+                                    <h5><a href="#">Bebidas </a></h5>
+                                    <h7>Día </h7>
+                                    <div class="product__item__price">1,20€ <span>1,34€</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="img/product/discount/pd-4.jpg">
+                                    <div class="product__discount__percent">-22%</div>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <span>Mango</span>
+                                    <h5><a href="#">Frutas </a></h5>
+                                    <h7>Carrefour </h7>
+                                    <div class="product__item__price">2,40€ <span>2,92€</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="img/product/discount/pd-5.jpg">
+                                    <div class="product__discount__percent">-33%</div>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <span>Hamburguesa Ecológica </span>
+                                    <h5><a href="#">Carnes</a></h5>
+                                    <h7>Lidl </h7>
+                                    <div class="product__item__price">4,00€ <span>5,32€</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                    data-setbg="img/product/discount/pd-6.jpg">
+                                    <div class="product__discount__percent">-10%</div>
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <span>Clara de Huevos</span>
+                                    <h5><a href="#">Huevos</a></h5>
+                                    <h7>Carrefour </h7>
+                                    <div class="product__item__price">1,10€ <span>1,21€</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <div class="filter__item">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="filter__sort">
+                                <span>Ordenar por</span>
+                                <select>
+                                    <option value="0">Relevancia </option>
+                                    <option value="1">Precio de menor a mayor</option>
+                                    <option value="2">Precio de mayor a menor</option>
+                                    <option value="3">Novedades</option>
+                                    <option value="4">Mayor descuento</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+                            <div class="filter__found">
+                                <h6><span>100</span> Categorias </h6>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 my-3">
+                                    <div class="pull-right">
+                                        <div class="btn-group">
+                                            <button class="btn btn-info" id="list">
+                                                Vista Lista
+                                            </button>
+                                            <button class="btn btn-danger" id="grid">
+                                                Vista Cuadrícula
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="products" class="row view-group">
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="img\product\product-2.jpg" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="http://placehold.it/400x250/000/fff" alt="" />
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item col-xs-4 col-lg-4">
+                                    <div class="thumbnail card">
+                                        <div class="img-event">
+                                            <img class="group list-group-image img-fluid"
+                                                src="img\product\product-1.jpg" alt="" />
+
+                                        </div>
+                                        <div class="caption card-body">
+                                            <h4 class="group card-title inner list-group-item-heading">
+                                                Product title</h4>
+                                            <p class="group inner list-group-item-text">
+                                                Product description... Lorem ipsum dolor sit amet, consectetuer
+                                                adipiscing elit,
+                                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                                aliquam erat volutpat.</p>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead">
+                                                        $21.000</p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    <ul class="product__item__pic__hover">
+                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="../inicio.html"><img src="../img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Dirección: ""</li>
+                            <li>Phone: +34 610 988 345</li>
+                            <li>Email: mostrarporductos@mihai.com </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Useful Links</h6>
+                        <ul>
+                            <li><a href="#">Sobre nosotros</a></li>
+                            <li><a href="#">Sobre nuestro comparador</a>
+
+                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#">Mapa</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Suscríbase a nuestras ofertas </h6>
+                        <p>Recibir correo con nuestros descuentos y ofertas.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Introducir e-mail">
+                            <button type="submit" class="site-btn">Suscríbase</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados
+                                | "" <i class="fa fa-heart" aria-hidden="true"></i> por <a href="https://colorlib.com"
+                                    target="_blank">Mihai</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment"><img src="../img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/mixitup.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+
+
+
+</body>
+
+</html>

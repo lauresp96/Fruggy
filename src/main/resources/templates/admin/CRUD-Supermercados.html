@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es"><head>
+
+    <title th:text="#{supermarket.list.header}"></title>
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container mt-4" layout:fragment="content">
+    <h1 th:text="#{supermarket.list.header}">Lista de Supermercados</h1>
+    <a class="btn btn-primary" th:href="@{/admin/supermercados/agregar}" th:text="#{supermarket.list.create}">Añadir Supermercado</a>
+    <div class="container">
+        <div th:replace="~{fragments/supermercados/tablaAdminSupermercados :: tablaAdminSupermercados}"></div>
+    </div>
+</div>
+</body>
+</html>

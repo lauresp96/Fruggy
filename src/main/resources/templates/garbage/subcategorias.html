@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-3 col-md-5">
+    <div class="sidebar">
+        <div class="sidebar__item">
+            <h5>Buscar por Subcategorías</h5>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="subcategoria, iterStat : ${subcategorias}"
+                    th:if="${iterStat.index < 6}">
+                    <a th:href="@{/Categorias/Categoria_{subcategoriaId}(subcategoriaId=${subcategoria.id})}"
+                       th:text="${subcategoria.tipo}"></a>
+                </li>
+            </ul>
+            <div id="more" style="display: none;">
+                <ul class="list-group mt-2" th:each="subcategoria, iterStat : ${subcategorias}"
+                    th:if="${iterStat.index >= 6}">
+                    <li class="list-group-item">
+                        <a th:href="@{/Categorias/Categoria_{subcategoriaId}(subcategoriaId=${subcategoria.id})}"
+                           th:text="${subcategoria.tipo}"></a>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-link mt-2" id="mas__subcategorias" onclick="myFunction()"
+                    th:if="${subcategorias.size() > 6}">Mostrar más
+            </button>
+        </div>
+        <div class="sidebar__item sidebar__item__color--option">
+            <h4>Supermercado</h4>
+            <div class="form-check" th:each="supermercado : ${supermercados}">
+                <input class="form-check-input" type="radio" th:id="${supermercado.nombreSuper}"
+                       name="supermarket" th:value="${supermercado.nombreSuper}"
+                       onclick="filterBySupermarket()">
+                <label class="form-check-label" th:for="${supermercado.nombreSuper}"
+                       th:text="${supermercado.nombreSuper}"></label>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

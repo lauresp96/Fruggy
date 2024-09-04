@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title th:text="#{products}"></title>
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4" layout:fragment="content">
+    <!-- Sección Hero -->
+    <div th:replace="~{fragments/partes-layout/hero-section :: heroSection}"></div>
+
+    <!-- Productos -->
+    <div class="container">
+        <div th:replace="~{fragments/productos/productos :: productos}"></div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom JS -->
+<script src="/js/filter-by-supermarket.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/toggle-more.js"></script>
+<script src="/js/productosDescuento.js"></script>
+<script src="/js/preloader.js"></script>
+<script src="/js/toggleCategories.js" defer></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title th:text="#{user.list.create}">Creación de Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4" layout:fragment="content">
+    <h1 th:text="#{user.list.create}"></h1>
+    <div class="container">
+        <div th:replace="~{fragments/usuario/formularioAdminCrearUsuario :: formularioAdminCrearUsuario}"></div>
+    </div>
+</div>
+</body>
+</html>

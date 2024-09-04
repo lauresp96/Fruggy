@@ -1,0 +1,32 @@
+<div th:fragment="agregar-descuento">
+    <h2 th:text="#{form.discount.title}">Agregar Descuento</h2>
+    <form th:action="@{'/admin/productos/descuento/' + ${producto.id}}" method="post">
+        <div class="mb-3">
+            <label for="tipoDescuento" class="form-label" th:text="#{form.discount.type}"></label>
+            <select class="form-control" id="tipoDescuento" name="tipoDescuentoId" required>
+                <option value="" th:text="#{form.discount.type}"></option>
+                <option th:each="tipoDescuento : ${tiposDescuento}" th:value="${tipoDescuento.id}">
+                    <th:block th:switch="${idioma}">
+                        <span th:case="'es'" th:text="${tipoDescuento.tipo_es}"></span>
+                        <span th:case="'en'" th:text="${tipoDescuento.tipo_en}"></span>
+                    </th:block>
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="porcentaje" th:text="#{form.discount.percentage}"></label>
+            <input type="number" name="porcentaje" id="porcentaje" step="0.01" min="0" max="100" required>
+        </div>
+        <div>
+            <label for="fechaInicio" th:text="#{form.discount.start_date}"></label>
+            <input type="date" name="fechaInicio" id="fechaInicio" required>
+        </div>
+        <div>
+            <label for="fechaFin" th:text="#{form.discount.end_date}"></label>
+            <input type="date" name="fechaFin" id="fechaFin" required>
+        </div>
+        <div>
+            <button type="submit" th:text="#{form.discount.submit}"></button>
+        </div>
+    </form>
+</div>

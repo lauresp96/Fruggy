@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mostrar productos</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <!-- hide/show buttons "Descuentos" -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/hide-show-products.js"></script>
+    <script src="../js/toggle-more.js"></script> <!--  toggle-more.js -->
+    <script src="../js/filter-by-supermarket.js"></script> <!-- filter-by-supermarket.js -->
+    <script src="../js/filter-products.js"></script>
+    <script src="../js/switch-product-view.js"></script>
+
+
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div th:replace="~{fragments/preloader :: preloader}"></div>
+<!--  humberger menu  -->
+<div th:replace="~{layout/humberger-menu :: humbergerMenu}"></div>
+<!--  header  -->
+<div th:replace="~{layout/header-productos :: header}"></div>
+<!--  hero section  -->
+<div th:replace="~{layout/hero-section :: heroSection}"></div>
+<!--  breadcrumb section  -->
+<div th:replace="~{layout/breadcrumb-section :: breadcrumbSection}"></div>
+<!-- Product Filter Section -->
+<div th:replace="~{layout/productos :: productos}"></div>
+<!-- Footer Section  -->
+<div th:replace="~{layout/footer-products :: footer}"></div>
+
+
+<!-- Js Plugins -->
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.nice-select.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.slicknav.js"></script>
+<script src="../js/mixitup.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/main.js"></script>
+
+
+
+</body>
+
+</html>

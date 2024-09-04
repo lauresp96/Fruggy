@@ -1,0 +1,243 @@
+<section class="product spad" th:fragment="productos">
+    <!-- Sección para mostrar mensajes -->
+    <div th:if="${mensajeExito}" class="alert alert-success" role="alert">
+        <span th:text="${mensajeExito}"></span>
+    </div>
+    <div th:if="${mensajeError}" class="alert alert-danger" role="alert">
+        <span th:text="${mensajeError}"></span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="filter__item">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="filter__found">
+                            <span th:text="${pagina.numberOfElements}"></span>
+                            <span th:text="#{product.pageProducts}"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5">
+                        <div class="filter__options">
+                            <span class="filter__label" th:text="#{product.sortBy}"></span>
+                            <div class="filter__buttons">
+                                <a class="filter__btn"
+                                   th:href="@{/productos(page=${currentPage}, size=${pagina.size}, sort='precioAsc')}"
+                                   th:text="#{product.sortPriceAsc}"></a>
+                                <a class="filter__btn"
+                                   th:href="@{/productos(page=${currentPage}, size=${pagina.size}, sort='precioDesc')}"
+                                   th:text="#{product.sortPriceDesc}"></a>
+                                <a class="filter__btn"
+                                   th:href="@{/productos(page=${currentPage}, size=${pagina.size}, sort='novedades')}"
+                                   th:text="#{product.sortNewArrivals}"></a>
+                                <a class="filter__btn"
+                                   th:href="@{/productos(page=${currentPage}, size=${pagina.size}, sort='mejorPuntuacion')}"
+                                   th:text="#{product.sortBestRated}"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Productos -->
+                    <div id="products" class="view-group">
+                        <div class="row">
+                            <div class="item col-xs-12 col-lg-4" th:each="producto : ${pagina.content}">
+                                <div class="thumbnail card">
+                                    <div class="img-event">
+                                        <!-- Imagen del producto -->
+                                        <a href="#" class="img-link" data-bs-toggle="modal"
+                                           th:data-bs-target="'#detailsModal' + ${producto.id}">
+                                            <img th:src="@{'/imagenes/' + ${producto.imagenes[0].rutaImagen}}"
+                                                 alt="Imagen del Producto" class="product-image"/>
+                                        </a>
+
+                                        <!-- Modal para ver detalles -->
+                                        <div class="modal fade" th:id="'detailsModal' + ${producto.id}" tabindex="-1"
+                                             aria-labelledby="'detailsModalLabel' + ${producto.id}" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"
+                                                            th:text="${producto.nombreProducto}"></h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="#{product.close}"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p><strong th:text="#{product.modal.description}">:</strong>
+                                                            <span th:text="${producto.descripcion}"></span></p>
+                                                        <p><strong th:text="#{product.brand}"></strong> <span
+                                                                th:text="${producto.marca}"></span></p>
+                                                        <p><strong th:text="#{product.price}"></strong>
+                                                            <span th:if="${producto.descuentos.size() > 0}">
+                                                                <span th:each="descuento : ${producto.descuentos}">
+                                                                    <span th:if="${descuento.activo}">
+                                                                        <!-- Precio con descuento -->
+                                                                        <span th:text="${#numbers.formatDecimal(producto.precios[0].valor * (1 - descuento.porcentaje / 100), 1, 2) + ' €'}"></span>
+                                                                        <!-- Texto del descuento con porcentaje -->
+                                                                        <span th:text="' (' + ${descuento.porcentaje} + ' ' + #{product.discount} + ')'"></span>
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                            <span th:if="${producto.descuentos.size() == 0}"
+                                                                  th:text="${#numbers.formatDecimal(producto.precios[0].valor, 1, 2) + ' €'}"></span>
+                                                        </p>
+                                                        <p><strong th:text="#{product.store}">Supermercado:</strong>
+                                                            <span th:if="${producto.precios.size() > 0 && producto.precios[0].supermercado != null}"
+                                                                  th:text="${producto.precios[0].supermercado.nombreSuper + ' (' + producto.precios[0].supermercado.municipio + ')'}">Supermercado</span>
+                                                            <span th:if="${producto.precios.size() == 0 || producto.precios[0].supermercado == null}">Sin supermercado asignado</span>
+                                                        </p>
+                                                        <p><strong th:text="#{product.averageRating}">Nota
+                                                            Media:</strong>
+                                                            <span th:if="${producto.notaMedia != null}"
+                                                                  th:text="${#numbers.formatDecimal(producto.notaMedia, 1, 2)}"></span>
+                                                            <span th:if="${producto.notaMedia == null}">N/A</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                th:text="#{producto.details.backToCatalog}"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <strong th:text="#{product.name}">Nombre:</strong> <span
+                                                th:text="${producto.nombreProducto}"></span><br/>
+                                            <strong th:text="#{product.brand}">Marca:</strong> <span
+                                                th:text="${producto.marca}"></span><br/>
+                                            <strong th:text="#{product.price}">Precio:</strong>
+                                            <span th:if="${producto.descuentos.size() > 0}">
+                                                <span th:each="descuento : ${producto.descuentos}">
+                                                    <span th:if="${descuento.activo}">
+                                                        <!-- Precio con descuento -->
+                                                        <span th:text="${#numbers.formatDecimal(producto.precios[0].valor * (1 - descuento.porcentaje / 100), 1, 2) + ' €'}"></span>
+                                                        <!-- Texto del descuento con porcentaje -->
+                                                        <span th:text="' (' + ${descuento.porcentaje} + ' ' + #{product.discount} + ')'"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span th:if="${producto.descuentos.size() == 0}"
+                                                  th:text="${#numbers.formatDecimal(producto.precios[0].valor, 1, 2) + ' €'}"></span>
+                                            <br>
+                                            <strong th:text="#{product.store}">Supermercado:</strong>
+                                            <span th:if="${producto.precios.size() > 0 && producto.precios[0].supermercado != null}"
+                                                  th:text="${producto.precios[0].supermercado.nombreSuper + ' (' + producto.precios[0].supermercado.municipio + ')'}"></span>
+                                            <span th:if="${producto.precios.size() == 0 || producto.precios[0].supermercado == null}"></span>
+                                            <br>
+                                            <strong th:text="#{product.averageRating}"> </strong>
+                                            <span th:if="${producto.notaMedia != null}"
+                                                  th:text="${#numbers.formatDecimal(producto.notaMedia, 1, 2)}"></span>
+                                            <span th:if="${producto.notaMedia == null}"></span>
+                                        </p>
+
+                                        <!-- Contenedor de botones -->
+                                        <div class="btn-container">
+                                            <!-- Botón para añadir a la cesta -->
+                                            <button type="button" class="btn btn-icon" data-bs-toggle="modal"
+                                                    onclick="checkAuthentication('${userAuthenticated}')"
+                                                    th:data-bs-target="'#selectBasketModal' + ${producto.id}">
+                                                <i class="fa fa-cart-plus"></i>
+                                            </button>
+                                            <!-- Botón para ver detalles -->
+                                            <a th:href="@{/productos/detalles/{id}(id=${producto.id})}"
+                                               class="btn btn-secondary" th:text="#{product.viewDetails}"></a>
+                                        </div>
+
+                                        <!-- Modal para añadir a cesta -->
+                                        <div class="modal fade" th:id="'selectBasketModal' + ${producto.id}"
+                                             tabindex="-1" aria-labelledby="'selectBasketLabel' + ${producto.id}"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="selectBasketLabel"
+                                                            th:text="#{product.selectBasket}"></h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="#{product.close}"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form th:action="@{/cestas/agregarProducto}" method="post">
+                                                            <input type="hidden" name="productoId"
+                                                                   th:value="${producto.id}"/>
+                                                            <input type="hidden" name="cantidad" value="1"/>
+
+                                                            <!-- Lista de cestas disponibles -->
+                                                            <div th:if="${cestas.size() > 0}">
+                                                                <label for="cestaId"
+                                                                       th:text="#{product.selectBasket}"></label>
+                                                                <select id="cestaId" name="cestaId" class="form-select">
+                                                                    <option th:each="cesta : ${cestas}"
+                                                                            th:value="${cesta.id}"
+                                                                            th:text="${cesta.nombre}"></option>
+                                                                </select>
+                                                            </div>
+                                                            <div th:if="${cestas.size() == 0}">
+                                                                <p th:text="#{product.noBasket}"></p>
+                                                                <div class="mt-3">
+                                                                    <label for="nuevaCesta"
+                                                                           th:text="#{product.createNewBasket}"></label>
+                                                                    <input type="text" id="nuevaCesta" name="nuevaCesta"
+                                                                           class="form-control"
+                                                                           th:placeholder="#{placeholder.nuevaCesta}"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Botón para enviar el formulario -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal"
+                                                                        th:text="#{product.cancel}"></button>
+                                                                <button type="submit" class="btn btn-primary"
+                                                                        th:text="#{product.save}"></button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Paginación -->
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <ul class="pagination">
+                                    <li class="page-item" th:if="${pagina.hasPrevious()}">
+                                        <a class="page-link"
+                                           th:href="@{/productos(page=${pagina.number - 1}, size=${pagina.size}, sort=${currentSort})}"
+                                           th:text="#{product.previous}"></a>
+                                    </li>
+                                    <li class="page-item disabled" th:unless="${pagina.hasPrevious()}">
+                                        <span class="page-link" th:text="#{product.previous}"></span>
+                                    </li>
+                                    <li class="page-item" th:if="${pagina.hasNext()}">
+                                        <a class="page-link"
+                                           th:href="@{/productos(page=${pagina.number + 1}, size=${pagina.size}, sort=${currentSort})}"
+                                           th:text="#{product.next}"></a>
+                                    </li>
+                                    <li class="page-item disabled" th:unless="${pagina.hasNext()}">
+                                        <span class="page-link" th:text="#{product.next}"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var modals = document.querySelectorAll('.modal');
+        modals.forEach(function (modal) {
+            var bootstrapModal = new bootstrap.Modal(modal);
+            modal.addEventListener('shown.bs.modal', function () {
+                console.log('Modal mostrado:', modal.id);
+            });
+        });
+    });
+</script>

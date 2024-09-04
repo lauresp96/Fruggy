@@ -1,0 +1,455 @@
+@import "header.css";
+@import "hero.css";
+@import "footer.css";
+@import "inicio.css";
+@import "admin.css";
+@import "bootstrap.min.css";
+@import "mediaQueries.css";
+
+html, body {
+    height: 100%;
+    font-family: "Cairo", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    overflow-x: hidden; /* Previene el desplazamiento horizontal en toda la página */
+}
+
+h1, h6 {
+    margin: 0;
+    color: #111111;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 2.5rem; /* Tamaño de fuente más ajustado para la página */
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    color: #6f6f6f;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input:focus, select:focus, button:focus, textarea:focus {
+    outline: none;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+    color: lightgreen;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: #00FF00;
+    font-weight: 700;
+}
+
+/*---------------------
+  Product Details
+-----------------------*/
+.product-images {
+    margin-bottom: 1rem;
+}
+
+.product-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-details {
+    margin-top: 1rem;
+}
+
+.product-details p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-details p strong {
+    color: #007bff;
+}
+
+.product-details .product-price {
+    font-size: 1.5rem;
+    color: #00FF00;
+    font-weight: bold;
+}
+
+.similar-product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    transition: transform 0.3s;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.similar-product-img {
+    height: 200px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+}
+
+.similar-product-card:hover {
+    transform: scale(1.02);
+}
+
+.similar-product-img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.review-list {
+    margin-top: 2rem;
+}
+
+.review-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.review {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.review strong {
+    color: #333;
+}
+
+.review p {
+    margin: 0.5rem 0;
+}
+
+.rating-form {
+    margin-top: 2rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rating-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.rating-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.rating-form label {
+    font-weight: bold;
+}
+
+.rating-form textarea, .rating-form input {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.rating-form textarea {
+    height: 100px;
+}
+
+.rating-form input[type="number"] {
+    max-width: 100px;
+}
+
+.rating-form .btn-primary {
+    background-color: #00FF00;
+    border-color: #00FF00;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.rating-form .btn-primary:hover {
+    background-color: #00cc00;
+    border-color: #00cc00;
+}
+
+.alert-danger {
+    margin-top: 2rem;
+}
+
+.row {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-6 {
+    padding: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-icon {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 0.75rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary .btn-icon {
+    margin-right: 0.5rem;
+}
+
+.btn-icon:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    padding: 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.thumbnail.card {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    background-color: #ffffff;
+    transition: transform 0.3s;
+    overflow: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    grid-row: 2; /* Texto en la segunda fila */
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.product-description {
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute; /* Posiciona el contenedor de botones de manera fija */
+    bottom: 1rem; /* Ajusta el espacio desde el fondo de la tarjeta */
+    left: 1rem; /* Ajusta el espacio desde el lado izquierdo */
+    right: 1rem; /* Ajusta el espacio desde el lado derecho */
+}
+
+.btn-icon {
+    padding: 0.5rem 1rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    text-align: left;
+}
+
+.table td.descripcion {
+    max-width: 250px;
+}
+
+.table th, .table td {
+    text-align: left;
+}
+
+.supermarket-image-container {
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.supermarket-image-container .image-item {
+    margin-bottom: 1rem;
+}
+
+.supermarket-image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.checkbox-container {
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-left: 0.5rem;
+}
+
+.checkbox-container label {
+    margin-right: 0.5rem;
+}
+
+.sticky-checkbox-container {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    z-index: 10;
+}
+
+.filter__options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter__label {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.filter__buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter__btn {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.filter__btn:hover {
+    text-decoration: underline;
+}
+
+/*---------------------
+  Responsive Adjustments
+-----------------------*/
+@media (max-width: 767px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .product-details .product-price {
+        font-size: 1.25rem;
+    }
+
+    .review-list h2 {
+        font-size: 1.25rem;
+    }
+
+    .rating-form {
+        margin-top: 2rem;
+        background-color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    .rating-form .btn-primary {
+        position: absolute;
+        bottom: 1rem; /* Posiciona el botón en la parte inferior */
+        right: 1rem; /* Ajusta el espacio desde el lado derecho */
+    }
+
+    .rating-form textarea {
+        margin-bottom: 2.5rem; /* Asegura suficiente espacio para el botón */
+    }
+
+    .thumbnail.card {
+        max-width: 100%;
+    }
+
+    .supermarket-image-container {
+        height: auto;
+    }
+}

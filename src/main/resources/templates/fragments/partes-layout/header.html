@@ -1,0 +1,79 @@
+<header class="header">
+    <div class="header__top py-2">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6 d-flex align-items-center">
+                    <i class="fa fa-envelope mr-2"></i>
+                    <span th:text="#{contact.email}"></span>
+                    <div class="header__top__right__social ml-3">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-end align-items-center">
+                    <div class="header__top__right__language mx-3">
+                        <!-- Mostrar el idioma actual -->
+                        <div th:text="#{language.current}"></div>
+                        <span class="arrow_carrot-down"></span>
+                        <ul class="list-unstyled">
+                            <!-- Enlace para cambiar a Español -->
+                            <li>
+                                <a th:href="@{/language/es(redirect=${currentUrl})}" th:text="#{language.spanish}"></a>
+                            </li>
+                            <!-- Enlace para cambiar a Inglés -->
+                            <li>
+                                <a th:href="@{/language/en(redirect=${currentUrl})}" th:text="#{language.english}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header__top__right__auth d-flex align-items-center">
+                        <a href="/usuario/administracion" class="mr-3" sec:authorize="isAuthenticated()">
+                            <i class="fa fa-user"></i> <span th:text="#{header.my_account}"></span>
+                        </a>
+                        <a href="/cestas" class="mr-3" sec:authorize="isAuthenticated()">
+                            <i class="fa fa-shopping-basket"></i> <span th:text="#{header.my_baskets}"></span>
+                        </a>
+                        <a href="/logout" class="mr-3" sec:authorize="isAuthenticated()">
+                            <i class="fa fa-sign-out-alt"></i> <span th:text="#{header.logout}"></span>
+                        </a>
+                        <a href="/login" sec:authorize="!isAuthenticated()">
+                            <i class="fa fa-sign-in-alt"></i> <span th:text="#{header.login}"></span>
+                        </a>
+                        <a href="/registro" sec:authorize="!isAuthenticated()">
+                            <i class="fa fa-user-plus"></i> <span th:text="#{header.register}"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="/">
+                        <img src="/img/logo.png" height="120" width="100" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav class="header__menu">
+                    <ul class="list-unstyled mb-0 d-flex">
+                        <li><a href="/" th:text="#{menu.home}"></a></li>
+                        <li><a href="/productos" th:text="#{menu.products}"></a></li>
+                        <li><a href="/supermercados" th:text="#{menu.supermarkets}"></a></li>
+                        <li class="header__menu__item" sec:authorize="hasRole('ROLE_Administrador')">
+                            <a href="#" th:text="#{role.admin.desc}"></a>
+                            <ul class="header__menu__dropdown list-unstyled">
+                                <li><a href="/admin/usuarios" th:text="#{admin.users}"></a></li>
+                                <li><a href="/admin/productos" th:text="#{admin.products}"></a></li>
+                                <li><a href="/admin/supermercados" th:text="#{admin.supermarkets}"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

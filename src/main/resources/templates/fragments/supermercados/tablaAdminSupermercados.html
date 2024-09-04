@@ -1,0 +1,87 @@
+<div th:fragment="tablaAdminSupermercados">
+    <!-- Filtros y ordenación -->
+    <form action="#" method="get" class="form-inline mb-3">
+        <div class="form-group mr-2">
+            <label for="sortField" class="mr-2" th:text="#{supermarket.sort.label}">Ordenar por:</label>
+            <select name="sortField" id="sortField" class="form-control" onchange="this.form.submit()">
+                <option value="nombreSuper" th:selected="${currentSortField == 'nombreSuper'}"
+                        th:text="#{supermarket.sort.name}">
+                </option>
+                <option value="id" th:selected="${currentSortField == 'id'}"
+                        th:text="#{supermarket.sort.id}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="sortDirection" th:value="${reverseSortDirection}">
+            <input type="hidden" name="page" th:value="${currentPage}">
+            <input type="hidden" name="size" th:value="10">
+        </div>
+    </form>
+
+    <!-- Tabla de supermercados -->
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th th:text="#{supermarket.list.name}"></th>
+            <th th:text="#{supermarket.list.URL}"></th>
+            <th th:text="#{supermarket.details.schedule}"></th>
+            <th th:text="#{supermarket.address}"></th>
+            <th th:text="#{supermarket.edit}"></th>
+            <th th:text="#{supermarket.delete}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supermercado : ${supermercados.content}">
+            <td th:text="${supermercado.nombreSuper}"></td>
+            <td th:text="${supermercado.url}"></td>
+            <td th:text="${supermercado.horario}"></td>
+            <td th:text="${supermercado.calle + ', ' + supermercado.municipio + ', ' + supermercado.pais + ', ' + supermercado.codigopostal}">
+                Dirección
+            </td>
+            <td>
+                <a th:href="@{/admin/supermercados/editar/{id}(id=${supermercado.id})}"
+                   class="btn btn-warning" th:text="#{supermarket.edit}">Editar</a>
+            </td>
+            <td>
+                <form th:action="@{/admin/supermercados/eliminar/{id}(id=${supermercado.id})}" method="post"
+                      onsubmit="return confirm('¿Estás seguro de eliminar este supermercado?');">
+                    <input type="submit" class="btn btn-danger" th:value="#{supermarket.delete}"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!-- Controles de paginación -->
+    <div>
+        <ul class="pagination">
+            <!-- Enlace a la página anterior -->
+            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/admin/supermercados(page=${currentPage > 0 ? currentPage - 1 : 0}, size=${10}, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="#{supermarket.pagination.previous}"></a>
+            </li>
+
+            <!-- Enlaces a cada página -->
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? 'active'">
+                <a class="page-link"
+                   th:href="@{/admin/supermercados(page=${i}, size=${10}, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="${i + 1}"></a>
+            </li>
+
+            <!-- Enlace a la página siguiente -->
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/admin/supermercados(page=${currentPage < totalPages - 1 ? currentPage + 1 : totalPages - 1}, size=${10}, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="#{supermarket.pagination.next}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div th:if="${supermercados.content == null or #lists.isEmpty(supermercados.content)}">
+        <p th:text="#{supermarket.emptyList}"></p>
+    </div>
+</div>

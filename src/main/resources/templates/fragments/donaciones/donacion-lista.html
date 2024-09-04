@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Donaciones</title>
+</head>
+<body>
+
+<div th:fragment="donacion-lista">
+    <h1>Lista de Donaciones</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="donacion : ${donaciones}">
+            <td th:text="${donacion.id}"></td>
+            <td th:text="${donacion.donacion}"></td>
+            <td th:text="${donacion.fecha}"></td>
+            <td th:text="${donacion.usuario.detalle.nombreUsuario}"></td>
+            <td>
+                <a th:href="@{/donaciones/{id}(id=${donacion.id})}">Ver</a>
+                <a th:href="@{/donaciones/{id}/editar(id=${donacion.id})}">Editar</a>
+                <form th:action="@{/donaciones/{id}/eliminar(id=${donacion.id})}" method="post" style="display:inline;">
+                    <input type="submit" value="Eliminar"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/donaciones/crear">Crear Nueva Donación</a>
+</div>
+
+</body>
+</html>

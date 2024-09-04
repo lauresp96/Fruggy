@@ -1,0 +1,125 @@
+<div class="container mt-4" th:fragment="formularioAdminModificarUsuario">
+    <a class="btn btn-secondary" th:href="@{/admin/usuarios}" th:text="#{form.back}">Back</a>
+    <br><br>
+    <form th:action="@{/admin/usuarios/editar/{id}(id=${usuario.id})}" method="post" th:object="${usuario}">
+        <input type="hidden" th:field="*{id}"/>
+
+        <div class="mb-3">
+            <label for="email" class="form-label" th:text="#{form.email}"></label>
+            <input type="email" th:field="*{email}" id="email" class="form-control" required>
+            <div th:if="${#fields.hasErrors('email')}" class="text-danger">
+                <span th:errors="*{email}" th:text="#{form.emailRequired}"></span>
+            </div>
+        </div>
+
+        <div class="checkbox-container">
+            <label for="activo" class="form-check-label" th:text="#{form.active}"></label>
+            <input type="checkbox" class="form-check-input" id="activo" name="activo" value="true" checked="checked">
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label" th:text="#{form.password}"></label>
+            <input type="password" th:field="*{password}" id="password" class="form-control">
+            <div th:if="${#fields.hasErrors('password')}" class="text-danger">
+                <span th:errors="*{password}" th:text="#{form.passwordRequired}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="telefono" class="form-label" th:text="#{form.phone}"></label>
+            <input type="tel" th:field="*{telefono}" id="telefono" class="form-control" required>
+            <div th:if="${#fields.hasErrors('telefono')}" class="text-danger">
+                <span th:errors="*{telefono}" th:text="#{form.phoneRequired}"></span>
+            </div>
+        </div>
+
+        <!-- Selección de Roles -->
+        <div class="mb-3">
+            <label for="roles" class="form-label" th:text="#{form.roles}"></label>
+            <select id="roles" class="form-control form-control-multiple" th:field="*{roles}" multiple>
+                <option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.rolNombre}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('roles')}" class="text-danger">
+                <span th:errors="*{roles}"></span>
+            </div>
+        </div>
+
+        <!-- Detalles del Usuario -->
+        <h4 th:text="#{form.userDetails}"></h4>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label" th:text="#{form.name}"></label>
+            <input type="text" th:field="*{detalle.nombre}" id="nombre" class="form-control" required>
+            <div th:if="${#fields.hasErrors('detalle.nombre')}" class="text-danger">
+                <span th:errors="*{detalle.nombre}"></span>
+            </div>
+        </div>
+
+        <!-- Eliminar el campo nombreUsuario del formulario -->
+
+        <div class="mb-3">
+            <label for="apellido" class="form-label" th:text="#{form.lastname}"></label>
+            <input type="text" th:field="*{detalle.apellido}" id="apellido" class="form-control" required>
+            <div th:if="${#fields.hasErrors('detalle.apellido')}" class="text-danger">
+                <span th:errors="*{detalle.apellido}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="edad" class="form-label" th:text="#{form.age}"></label>
+            <input type="number" th:field="*{detalle.edad}" id="edad" class="form-control" required>
+            <div th:if="${#fields.hasErrors('detalle.edad')}" class="text-danger">
+                <span th:errors="*{detalle.edad}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="calle" class="form-label" th:text="#{form.street}"></label>
+            <input type="text" th:field="*{detalle.calle}" id="calle" class="form-control">
+            <div th:if="${#fields.hasErrors('detalle.calle')}" class="text-danger">
+                <span th:errors="*{detalle.calle}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="municipio" class="form-label" th:text="#{form.town}"></label>
+            <input type="text" th:field="*{detalle.municipio}" id="municipio" class="form-control">
+            <div th:if="${#fields.hasErrors('detalle.municipio')}" class="text-danger">
+                <span th:errors="*{detalle.municipio}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="pais" class="form-label" th:text="#{form.country}"></label>
+            <input type="text" th:field="*{detalle.pais}" id="pais" class="form-control">
+            <div th:if="${#fields.hasErrors('detalle.pais')}" class="text-danger">
+                <span th:errors="*{detalle.pais}"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="codigoPostal" class="form-label" th:text="#{form.zipCode}"></label>
+            <input type="text" th:field="*{detalle.codigopostal}" id="codigoPostal" class="form-control">
+            <div th:if="${#fields.hasErrors('detalle.codigopostal')}" class="text-danger">
+                <span th:errors="*{detalle.codigopostal}"></span>
+            </div>
+        </div>
+
+        <!-- Selección de Género -->
+        <div class="mb-3">
+            <label for="generoId" class="form-label" th:text="#{gender_label}"></label>
+            <select id="generoId" th:field="*{detalle.genero.id}" class="form-select" required>
+                <option value="" disabled selected th:text="#{select_gender}"></option>
+                <option th:each="genero : ${generos}"
+                        th:value="${genero.id}"
+                        th:text="${#fields.hasErrors('detalle.genero.id') ? 'error' : (idioma == 'es' ? genero.esDesc : genero.enDesc)}">
+                </option>
+            </select>
+            <div th:if="${#fields.hasErrors('detalle.genero.id')}" class="alert alert-danger">
+                <p th:each="err : ${#fields.errors('detalle.genero.id')}" th:text="${err}"></p>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" th:text="#{form.save}"></button>
+    </form>
+</div>

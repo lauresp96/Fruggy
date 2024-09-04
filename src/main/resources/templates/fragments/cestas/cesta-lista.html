@@ -1,0 +1,53 @@
+<div class="container" th:fragment="cesta-lista">
+    <h1 class="mt-4" th:text="#{basket.list.title}">Mis Cestas</h1>
+    <div class="mb-4">
+        <a href="/cestas/crear" class="btn btn-primary" th:text="#{basket.create.button}">Crear Nueva Cesta</a>
+    </div>
+    <div class="table-container">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th th:text="#{basket.name}"></th>
+                <th th:text="#{basket.creation.date}"></th>
+                <th th:text="#{basket.actions}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cesta : ${cestas}">
+                <td th:text="${cesta.nombre}"></td>
+                <td th:text="${cesta.fechaFormateada}"></td>
+                <td>
+                    <a th:href="@{/cestas/{id}(id=${cesta.id})}" class="btn btn-info btn-sm"
+                       th:text="#{basket.view.details}"></a>
+                    <!-- Botón para abrir el modal de confirmación -->
+                    <button type="button" class="btn btn-danger btn-sm"
+                            data-bs-toggle="modal"
+                            th:attr="data-bs-target='#modal_' + ${cesta.id}"
+                            th:text="#{basket.delete}"></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal para cada cesta -->
+    <div th:each="cesta : ${cestas}" class="modal fade"
+         th:id="'modal_' + ${cesta.id}" tabindex="-1" role="dialog"
+         aria-labelledby="confirmarEliminarCestaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="#{basket.delete.modal}"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" th:text="#{basket.delete.confirm}"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{account.confirmation.cancel}"></button>
+                    <form th:action="@{/cestas/{id}/eliminar(id=${cesta.id})}" method="post">
+                        <button type="submit" class="btn btn-danger" th:text="#{confirm.delete.basket}"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

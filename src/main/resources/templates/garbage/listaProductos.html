@@ -1,0 +1,44 @@
+<div id="products" class="row view-group" th:fragment="listaProductos">
+    <div  class="item col-xs-4 col-lg-4" th:each="producto : ${listaProducto}">
+        <div class="thumbnail card">
+            <div class="img-event">
+                <!-- Manejo condicional de la imagen -->
+                <img class="group list-group-image img-fluid"
+                     th:if="${producto.imagen != null}"
+                     th:src="@{${producto.imagen.pathImagen}}"
+                     alt="Imagen del Producto"
+                     th:alt="${producto.nombreProducto}"/>
+                <img class="group list-group-image img-fluid"
+                     th:if="${producto.imagen == null}"
+                     src="/static/images/default-product.png"
+                     alt="Imagen del Producto"
+                     th:alt="${producto.nombreProducto}"/>
+            </div>
+            <div class="caption card-body">
+                <h4 class="group card-title inner list-group-item-heading"
+                    th:text="${producto.nombreProducto}">Nombre del Producto</h4>
+                <p class="group inner list-group-item-text"
+                   th:text="${producto.descripcion}">Descripción del Producto</p>
+                <p class="group inner list-group-item-text"
+                   th:text="${producto.marca}">Marca</p>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <!-- Manejo del precio, incluyendo caso cuando productoPrecios es null -->
+                        <p class="lead">
+                                             <span th:if="${producto.productoPrecios != null}">
+                                                <span th:text="${producto.productoPrecios.valor}">Precio del Producto</span> €
+                                              </span>
+                            <span th:if="${producto.productoPrecios == null}">Precio no disponible</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <ul class="product__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

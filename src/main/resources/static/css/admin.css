@@ -1,0 +1,19 @@
+/* Estilos personalizados */
+
+#emailFilterForm {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#emailFilter {
+    width: 300px; /* Hacer el campo de filtro más largo */
+}
+
+.table-container {
+    position: relative;
+}
+
+#sortForm {
+    margin-top: 10px; /* Espacio arriba del dropdown */
+    width: 200px; /* Ajusta el ancho del formulario de ordenación si es necesario */
+}

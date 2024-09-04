@@ -1,0 +1,60 @@
+<div class="container mt-4" th:fragment="usuario-administracion-cuenta">
+    <h1 th:text="#{account.management.title}">Administración de Cuenta</h1>
+    <div class="card">
+        <div class="card-header" th:text="#{account.management.userData}"></div>
+        <div class="card-body">
+            <p><strong th:text="#{account.management.email}"></strong> <span th:text="${usuario.email}"></span>
+            </p>
+            <p><strong th:text="#{account.management.firstName}"></strong> <span
+                    th:text="${usuario.detalle.nombre}"></span></p>
+            <p><strong th:text="#{account.management.lastName}"></strong> <span
+                    th:text="${usuario.detalle.apellido}"></span></p>
+            <p><strong th:text="#{account.management.phone}"></strong> <span
+                    th:text="${usuario.telefono}"></span></p>
+            <p><strong th:text="#{account.management.age}"></strong> <span
+                    th:text="${usuario.detalle.edad}"></span></p>
+            <p><strong th:text="#{account.management.gender}"></strong>
+                <span th:text="${usuario.detalle.genero != null ? (idioma == 'es' ? usuario.detalle.genero.esDesc : usuario.detalle.genero.enDesc) : 'en'}"></span>
+            </p>
+            <p><strong th:text="#{account.management.address}"></strong></p>
+            <p><strong th:text="#{account.management.street}"></strong> <span
+                    th:text="${usuario.detalle.calle}"></span></p>
+            <p><strong th:text="#{account.management.town}"></strong> <span
+                    th:text="${usuario.detalle.municipio}"></span></p>
+            <p><strong th:text="#{account.management.country}"></strong> <span
+                    th:text="${usuario.detalle.pais}"></span></p>
+            <p><strong th:text="#{account.management.zipCode}"></strong> <span
+                    th:text="${usuario.detalle.codigopostal}"></span></p>
+
+            <div class="d-flex justify-content-between">
+                <a href="#" th:href="@{/usuario/administracion/editar/{id}(id=${usuario.id})}" class="btn btn-primary"
+                   th:text="#{account.management.editAccount}"></a>
+
+                <!-- Botón de baja con confirmación -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarBajaModal"
+                        th:text="#{account.management.unsubscribe}">Darse de Baja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar la baja -->
+    <div class="modal fade" id="confirmarBajaModal" tabindex="-1" role="dialog" aria-labelledby="confirmarBajaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarBajaModalLabel" th:text="#{account.confirmation.title}">Confirmar Baja</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" th:text="#{account.confirmation.message}">¿Está seguro de que desea darse de baja?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{account.confirmation.cancel}">Cancelar</button>
+                    <form th:action="@{/usuario/administracion/baja}" method="post">
+                        <button type="submit" class="btn btn-danger" th:text="#{account.confirmation.confirm}">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

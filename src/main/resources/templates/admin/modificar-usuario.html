@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title th:text="#{user.edit.information}">Editar Usuario</title>
+</head>
+<body>
+<div class="container mt-4" layout:fragment="content">
+    <h1 th:text="#{user.edit.information}">Editar Usuario</h1>
+    <div class="container">
+        <div th:replace="~{fragments/usuario/formularioAdminModificarUsuario :: formularioAdminModificarUsuario}"></div>
+    </div>
+</div>
+</body>
+</html>

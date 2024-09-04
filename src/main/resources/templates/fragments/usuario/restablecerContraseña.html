@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restablecer Contraseña</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4" th:fragment="restablecer-contraseña">
+    <h1>Restablecer Contraseña</h1>
+
+    <!-- Mensaje de error si las contraseñas no coinciden -->
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <span th:text="${error}"></span>
+    </div>
+
+    <form th:action="@{/usuarios/restablecer-contrasena/{id}(id=${usuario.id})}" method="post">
+        <div class="row">
+            <!-- Campo para nueva contraseña -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                <input type="password" id="newPassword" name="newPassword" class="form-control"
+                       placeholder="Nueva Contraseña" required>
+            </div>
+
+            <!-- Confirmación de nueva contraseña -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+                       placeholder="Confirmar Contraseña" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Restablecer Contraseña</button>
+        <a href="#" th:href="@{/usuario/administracion}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

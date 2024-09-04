@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles de la Donación</title>
+</head>
+<body>
+
+<div th:fragment="donacion-detalle">
+    <h1>Detalles de la Donación</h1>
+    <p>ID: <span th:text="${donacion.id}"></span></p>
+    <p>Cantidad: <span th:text="${donacion.donacion}"></span></p>
+    <p>Fecha: <span th:text="${donacion.fecha}"></span></p>
+    <p>Usuario: <span th:text="${donacion.usuario.nombreUsuario}"></span></p>
+    <a th:href="@{/donaciones}">Volver a la lista de donaciones</a>
+
+</div>
+</body>
+</html>

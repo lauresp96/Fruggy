@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cesta</title>
+</head>
+<body>
+<div th:fragment="editar-cesta">
+    <h1>Editar Cesta</h1>
+    <form th:action="@{/cestas/{id}(id=${cesta.id})}" th:object="${cesta}" method="post">
+        <label for="nombre">Nombre de la Cesta:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required/><br/>
+
+        <div th:if="${#fields.hasErrors('nombre')}" class="alert alert-danger">
+            <p th:each="error : ${#fields.errors('nombre')}" th:text="${error}"></p>
+        </div>
+
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario"
+               th:value="${cesta.usuario.detalle.nombreUsuario} + ' (' + ${cesta.usuario.email} + ')'" readonly/><br/>
+
+        <input type="submit" value="Actualizar Cesta"/>
+    </form>
+    <a th:href="@{/cestas}">Cancelar</a>
+</div>
+</body>
+</html>

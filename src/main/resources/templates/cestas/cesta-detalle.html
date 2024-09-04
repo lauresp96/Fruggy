@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{cart.details}">Detalles Cesta </title>
+</head>
+<body>
+<div class="container mt-4" layout:fragment="content">
+    <div class="container">
+        <div th:replace="~{fragments/cestas/cesta-detalle :: detalle-cesta}"></div>
+    </div>
+</div>
+</body>
+</html>

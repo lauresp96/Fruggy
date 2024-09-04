@@ -1,0 +1,108 @@
+<div class="container mt-4" th:fragment="tablaAdminProductos">
+    <table class="table table-striped mt-3">
+        <!-- Dropdown para seleccionar el orden -->
+        <form method="get" th:action="@{/admin/productos}" class="form-inline mb-3">
+            <label for="sort" th:text="#{admin.product.sort}">Sort by:</label>
+            <select name="sortField" id="sortField" class="form-control ml-2" onchange="this.form.submit()">
+                <option value="id" th:selected="${currentSortField == null || currentSortField == 'id'}"
+                        th:text="#{admin.product.id}">ID
+                </option>
+                <option value="precios.valor" th:selected="${currentSortField == 'precios.valor'}"
+                        th:text="#{admin.product.priceLow}">Price (Lowest)
+                </option>
+                <option value="precios.valor_desc" th:selected="${currentSortField == 'precios.valor_desc'}"
+                        th:text="#{admin.product.priceHigh}">Price (Highest)
+                </option>
+                <option value="nombreProducto" th:selected="${currentSortField == 'nombreProducto'}"
+                        th:text="#{admin.product.name}">Name
+                </option>
+            </select>
+            <input type="hidden" name="sortDirection" th:value="${reverseSortDirection}"/>
+        </form>
+
+        <thead>
+        <tr>
+            <th th:text="#{admin.product.id}"></th>
+            <th th:text="#{admin.product.name}"></th>
+            <th th:text="#{admin.product.description}"></th>
+            <th th:text="#{admin.product.price}">Price</th>
+            <th th:text="#{admin.product.supermarket}"></th>
+            <th th:text="#{admin.product.category}"></th>
+            <th th:text="#{admin.product.subcategory}"></th>
+            <th th:text="#{admin.product.active}"></th>
+            <th th:text="#{admin.product.discounts}"></th>
+            <th th:text="#{admin.product.edit}"></th>
+            <th th:text="#{admin.product.delete}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto : ${productos.content}">
+            <td th:text="${producto.id}"></td>
+            <td th:text="${producto.nombreProducto}"></td>
+            <td th:text="${producto.descripcion}"></td>
+            <td>
+                <span th:if="${producto.descuentos.size() > 0}">
+                    <span th:each="descuento : ${producto.descuentos}">
+                        <span th:if="${descuento.activo}">
+                            <span th:text="${#numbers.formatDecimal(producto.precios[0].valor * (1 - descuento.porcentaje / 100), 1, 2) + ' € (' + descuento.porcentaje + '% de descuento)'}"></span>
+                        </span>
+                    </span>
+                </span>
+                <span th:if="${producto.descuentos.size() == 0}"
+                      th:text="${#numbers.formatDecimal(producto.precios[0].valor, 1, 2) + ' €'}"></span>
+            </td>
+            <td th:text="${producto.precios[0].supermercado.nombreSuper + ' (' + producto.precios[0].supermercado.municipio + ')'}">
+
+            </td>
+            </td>
+            <td th:text="${producto.subcategoria != null ? (idioma == 'es' ? producto.subcategoria.categoria.tipo_es : producto.subcategoria.categoria.tipo_en) : 'No disponible'}">
+
+            </td>
+            <td th:text="${producto.subcategoria != null ? (idioma == 'es' ? producto.subcategoria.tipo_es : producto.subcategoria.tipo_en) : 'No disponible'}">
+
+            </td>
+            <td th:text="${producto.activo} ? 'Sí' : 'No'"></td>
+            <td>
+                <a th:href="@{'/admin/productos/descuento/' + ${producto.id}}" class="btn btn-outline-success"
+                   th:text="#{admin.product.discounts}"></a>
+            </td>
+            <td>
+                <a th:href="@{/admin/productos/editar/{id}(id=${producto.id})}" class="btn btn-warning"
+                   th:text="#{admin.product.edit}"></a>
+            </td>
+            <td>
+                <form th:action="@{/admin/productos/eliminar/{id}(id=${producto.id})}" method="post"
+                      onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                    <input type="submit" class="btn btn-danger" th:value="#{admin.product.delete}"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- Paginación -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-3">
+            <!-- Botón Anterior -->
+            <li class="page-item" th:classappend="${currentPage == 0} ? ' disabled'">
+                <a class="page-link"
+                   th:href="@{/admin/productos(page=${currentPage - 1}, size=10, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="#{admin.product.previous}" tabindex="-1"></a>
+            </li>
+
+            <!-- Botones de Páginas -->
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? ' active'">
+                <a class="page-link"
+                   th:href="@{/admin/productos(page=${i}, size=10, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="${i + 1}"></a>
+            </li>
+
+            <!-- Botón Siguiente -->
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? ' disabled'">
+                <a class="page-link"
+                   th:href="@{/admin/productos(page=${currentPage + 1}, size=10, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="#{admin.product.next}"></a>
+            </li>
+        </ul>
+    </nav>
+</div>

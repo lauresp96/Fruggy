@@ -1,0 +1,69 @@
+<div class="container mt-4" th:fragment="lista-supermercados">
+    <h1 th:text="#{supermarket.list.header}"></h1>
+    <!-- Filtros y ordenación -->
+    <form action="#" method="get" class="form-inline mb-3">
+        <div class="form-group mr-2">
+            <label for="sortField" class="mr-2" th:text="#{sort.field}"></label>
+            <select name="sortField" id="sortField" class="form-control" onchange="this.form.submit()">
+                <option value="nombreSuper" th:selected="${currentSortField == 'nombreSuper'}"
+                        th:text="#{sort.field.name}"></option>
+                <option value="id" th:selected="${currentSortField == 'id'}" th:text="#{sort.field.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="sortDirection" th:value="${reverseSortDirection}">
+            <input type="hidden" name="page" th:value="${currentPage}">
+            <input type="hidden" name="size" th:value="10">
+        </div>
+    </form>
+
+    <!-- Tabla de supermercados -->
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th th:text="#{supermarket.list.name}"></th>
+            <th th:text="#{supermarket.list.URL}"></th>
+            <th th:text="#{supermarket.list.details}"></th>
+            <th th:text="#{supermarket.list.ratings}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supermercado : ${supermercados.content}">
+            <td th:text="${supermercado.nombreSuper}"></td>
+            <td><a th:href="${supermercado.url}" th:text="${supermercado.url}"></a></td>
+            <td>
+                <a th:href="@{'/supermercados/detalles/' + ${supermercado.id}}"
+                   th:text="#{supermarket.list.details}"></a>
+            </td>
+            <td th:text="${supermercado.notaMedia}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Controles de paginación -->
+    <div>
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${currentPage == 0} ? ' disabled'">
+                <a class="page-link"
+                   th:href="@{/supermercados(page=${currentPage - 1}, size=${10}, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="#{supermarket.pagination.previous}"></a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? ' active'">
+                <a class="page-link"
+                   th:href="@{/supermercados(page=${i}, size=${10}, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? ' disabled'">
+                <a class="page-link"
+                   th:href="@{/supermercados(page=${currentPage + 1}, size=${10}, sortField=${currentSortField}, sortDirection=${currentSortDirection})}"
+                   th:text="#{supermarket.pagination.next}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Mensaje si no hay supermercados -->
+    <div th:if="${supermercados.content.isEmpty()}">
+        <p th:text="#{pagination.noSupermarkets}"></p>
+    </div>
+</div>

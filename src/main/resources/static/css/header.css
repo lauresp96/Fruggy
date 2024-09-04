@@ -1,0 +1,199 @@
+/* Header Styling */
+.header {
+    width: 100%;
+    background: linear-gradient(-90deg, #8FC5FF 15%, #6ADEDE 40%, #39A240 85%);
+    background-size: 200% 200%;
+    animation: ani_gradient 15.2s ease infinite;
+}
+
+@keyframes ani_gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.header__top {
+    padding: 10px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header__top__left,
+.header__top__right__auth a {
+    font-size: 14px;
+    color: #1c1c1c;
+}
+
+.header__top__left i {
+    color: #252525;
+}
+
+.header__top__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header__top__right__social {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.header__top__right__social a {
+    font-size: 16px;
+    color: #1c1c1c;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.header__top__right__social a:hover {
+    color: #7fad39;
+}
+
+.header__top__right__language {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 30px;
+}
+
+.header__top__right__language ul {
+    background: #222222;
+    width: 100px;
+    text-align: left;
+    padding: 5px 0;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 10;
+    display: none;
+}
+
+.header__top__right__language:hover ul {
+    display: block;
+}
+
+.header__top__right__language ul li a {
+    font-size: 14px;
+    color: #ffffff;
+    padding: 5px 10px;
+    display: block;
+}
+
+.header__top__right__auth a {
+    font-size: 14px;
+    color: #1c1c1c;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.header__top__right__auth a i {
+    margin-right: 6px;
+}
+
+.header__logo {
+    padding: 15px 0;
+}
+
+.header__logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.header__menu {
+    padding: 15px 0;
+}
+
+.header__menu ul {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.header__menu ul li {
+    position: relative;
+    list-style: none;
+    margin-right: 20px;
+}
+
+.header__menu ul li:last-child {
+    margin-right: 0;
+}
+
+.header__menu ul li a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #252525;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    white-space: nowrap; /* Evitar el wrap del texto */
+}
+
+.header__menu ul li a:hover {
+    color: #7fad39;
+    background-color: #f1f1f1;
+}
+
+/* Dropdown del Menú */
+.header__menu__dropdown {
+    display: none; /* Ocultar el dropdown por defecto */
+    position: absolute;
+    top: 100%; /* Justo debajo del menú */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    white-space: nowrap; /* Evitar el wrap del texto en dropdown */
+}
+
+.header__menu__item:hover .header__menu__dropdown {
+    display: block; /* Mostrar el dropdown al hacer hover sobre el elemento padre */
+    visibility: visible; /* Asegurar que es visible cuando está activo */
+}
+
+.header__menu__item .header__menu__dropdown {
+    visibility: hidden; /* Asegurar que el dropdown esté oculto por defecto */
+}
+
+.header__menu__dropdown li {
+    margin: 0;
+}
+
+.header__menu__dropdown li a {
+    padding: 10px 15px;
+    color: #252525;
+    font-size: 14px;
+    display: block;
+    text-decoration: none;
+}
+
+.header__menu__dropdown li a:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header__menu ul {
+        flex-direction: column;
+    }
+
+    .header__menu ul li {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,40 @@
+<!-- Hero Section Begin -->
+<section class="hero hero-normal" th:fragment="heroSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all" onclick="toggleCategories()">
+                        <i class="fa fa-bars"></i>
+                        <span th:text="#{category.all}"></span>
+                    </div>
+                    <ul id="categoryMenu">
+                        <li th:each="categoria : ${categorias}">
+                            <a th:href="@{/productos/categoria/{id}(id=${categoria.id})}">
+                                <th:block th:switch="${idioma}">
+                                    <span th:case="'es'" th:text="${categoria.tipo_es}"></span>
+                                    <span th:case="'en'" th:text="${categoria.tipo_en}"></span>
+                                </th:block>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form th:action="@{/productos}" method="get">
+                            <input type="text" name="search"
+                                   th:placeholder="#{search.placeholder}"
+                                   th:value="${search}">
+                            <button type="submit" class="site-btn"
+                                    th:text="#{search.button}">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->

@@ -1,0 +1,105 @@
+<div class="container mt-4" th:fragment="editar-usuario">
+    <h1 th:text="#{edit.user.title}">Edit User</h1>
+    <form th:action="@{/usuario/administracion/editar/{id}(id=${usuario.id})}"
+          th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{email}"/>
+        <div class="row">
+            <!-- Campo de nombre -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="nombre" class="form-label" th:text="#{edit.user.firstName}"></label>
+                <input type="text" id="nombre" th:field="*{detalle.nombre}" class="form-control"
+                       th:placeholder="#{edit.user.firstNamePlaceholder}" required>
+                <div th:if="${#fields.hasErrors('detalle.nombre')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('detalle.nombre')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Campo de apellido -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="apellido" class="form-label" th:text="#{edit.user.lastName}"></label>
+                <input type="text" id="apellido" th:field="*{detalle.apellido}" class="form-control"
+                       th:placeholder="#{edit.user.lastNamePlaceholder}" required>
+                <div th:if="${#fields.hasErrors('detalle.apellido')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('detalle.apellido')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Campo de contraseña -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="password" class="form-label" th:text="#{edit.user.password}"></label>
+                <input type="password" id="password" th:field="*{password}" class="form-control"
+                       th:placeholder="#{edit.user.passwordPlaceholder}" required>
+                <div th:if="${#fields.hasErrors('password')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('password')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Campo de edad -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="edad" class="form-label" th:text="#{edit.user.age}"></label>
+                <input type="number" id="edad" th:field="*{detalle.edad}" class="form-control"
+                       th:placeholder="#{edit.user.agePlaceholder}" required>
+                <div th:if="${#fields.hasErrors('detalle.edad')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('detalle.edad')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Campo de teléfono -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="telefono" class="form-label" th:text="#{edit.user.phone}"></label>
+                <input type="tel" id="telefono" th:field="*{telefono}" class="form-control"
+                       th:placeholder="#{phone_placeholder}">
+                <div th:if="${#fields.hasErrors('telefono')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('telefono')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Campo de calle -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="calle" class="form-label" th:text="#{edit.user.street}"></label>
+                <input type="text" id="calle" th:field="*{detalle.calle}" class="form-control"
+                       th:placeholder="#{edit.user.streetPlaceholder}">
+            </div>
+
+            <!-- Campo de municipio -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="municipio" class="form-label" th:text="#{edit.user.town}"></label>
+                <input type="text" id="municipio" th:field="*{detalle.municipio}" class="form-control"
+                       th:placeholder="#{edit.user.townPlaceholder}">
+            </div>
+
+            <!-- Campo de país -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="pais" class="form-label" th:text="#{edit.user.country}"></label>
+                <input type="text" id="pais" th:field="*{detalle.pais}" class="form-control"
+                       th:placeholder="#{edit.user.countryPlaceholder}">
+            </div>
+
+            <!-- Campo de código postal -->
+            <div class="col-lg-6 col-md-6 mb-3">
+                <label for="codigoPostal" class="form-label" th:text="#{edit.user.zipCode}"></label>
+                <input type="number" id="codigoPostal" th:field="*{detalle.codigopostal}" class="form-control"
+                       th:placeholder="#{edit.user.zipCodePlaceholder}">
+            </div>
+
+            <!-- Selección de Género -->
+            <div class="mb-3">
+                <label for="generoId" class="form-label" th:text="#{gender_label}"></label>
+                <select id="generoId" th:field="*{detalle.genero.id}" class="form-select" required>
+                    <option value="" disabled selected th:text="#{select_gender}"></option>
+                    <option th:each="genero : ${generos}"
+                            th:value="${genero.id}"
+                            th:text="${#fields.hasErrors('detalle.genero.id') ? 'error' : (idioma == 'es' ? genero.esDesc : genero.enDesc)}">
+                    </option>
+                </select>
+                <div th:if="${#fields.hasErrors('detalle.genero.id')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('detalle.genero.id')}" th:text="${err}"></p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" th:text="#{edit.user.save}"></button>
+            <a href="#" th:href="@{/usuario/administracion}" class="btn btn-secondary"
+               th:text="#{edit.user.cancel}"></a>
+        </div>
+    </form>
+
+</div>

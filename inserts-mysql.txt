@@ -1,0 +1,35 @@
+INSERT INTO detalles (nombre_usuario, nombre, apellido, edad, calle, municipio, pais, codigo_postal, genero_id)
+VALUES ( 'adminuser', 'Admin', 'User', 40, 'Admin Street', 'Admin City', 'Admin Country', 11111, 1),
+       ( 'johndoe', 'John', 'Doe', 30, '123 Main St', 'Sample City', 'Sample Country', 22222, 1),
+       ( 'janedoe', 'Jane', 'Doe', 28, '456 Oak St', 'Example City', 'Example Country', 33333, 2),
+       ( 'alicejohnson', 'Alice', 'Johnson', 35, '789 Pine St', 'Test City', 'Test Country', 44444, 2),
+       ('bobsmith', 'Bob', 'Smith', 32, '101 Maple St', 'Demo City', 'Demo Country', 55555, 1),
+       ( 'charliebrown', 'Charlie', 'Brown', 38, '202 Elm St', 'Mock City', 'Mock Country', 66666, 1),
+       ( 'davidwhite', 'David', 'White', 29, '303 Birch St', 'Sampleton', 'Countryland', 77777, 1),
+       ( 'emilygreen', 'Emily', 'Green', 27, '404 Cedar St', 'Faketown', 'Fakeland', 88888, 2),
+       ( 'frankblack', 'Frank', 'Black', 45, '505 Spruce St', 'Old City', 'Old Country', 99999, 1),
+       ( 'graceharris', 'Grace', 'Harris', 34, '606 Willow St', 'New Town', 'New Country', 10101, 2);
+INSERT INTO usuarios (id, email, active, password, telefono, detalle_id) VALUES
+(2, 'admin@example.com', TRUE, '$2a$10$adminpasswordhash', '1234567890', 2),
+(3, 'user1@example.com', TRUE, '$2a$10$user1passwordhash', '0987654321', 3),
+(4, 'user2@example.com', TRUE, '$2a$10$user2passwordhash', '1122334455', 4),
+(5, 'user3@example.com', TRUE, '$2a$10$user3passwordhash', '5566778899', 5),
+(6, 'user4@example.com', TRUE, '$2a$10$user4passwordhash', '6677889900', 6),
+(7, 'user5@example.com', TRUE, '$2a$10$user5passwordhash', '7788990011', 7),
+(8, 'user6@example.com', TRUE, '$2a$10$user6passwordhash', '8899001122', 8),
+(9, 'user7@example.com', TRUE, '$2a$10$user7passwordhash', '9900112233', 9),
+(10, 'user8@example.com', TRUE, '$2a$10$user8passwordhash', '0011223344', 10),
+(11, 'user9@example.com', TRUE, '$2a$10$user9passwordhash', '2233445566', 11);
+
+INSERT INTO usuario_rol (usuario_id, rol_id) VALUES
+(2, 1), -- El usuario con id 2 es admin
+(3, 2), -- Los demás son usuarios normales
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2);
+

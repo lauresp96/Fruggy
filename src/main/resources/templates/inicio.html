@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Fruggy</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container mt-4" layout:fragment="content">
+    <div class="container">
+        <div th:replace="~{fragments/partes-layout/inicio :: inicio}"></div>
+    </div>
+</div>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</body>
+</html>

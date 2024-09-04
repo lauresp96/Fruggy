@@ -1,0 +1,94 @@
+<div class="container" th:fragment="inicio">
+    <!-- Catchphrase -->
+    <section id="catchphrase" class="container my-5 text-center catchphrase-section">
+        <h1 th:text="#{inicio.catchphrase}"></h1>
+    </section>
+    <section id="recentProducts" class="container my-5">
+        <h2 th:text="#{inicio.recent_products}"></h2>
+        <div id="recentProductsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Carrusel con productos recientes -->
+                <div class="carousel-item active">
+                    <div class="d-flex">
+                        <!-- Producto 1 -->
+                        <a th:href="@{/productos/detalles/{id}(id=${productosNuevos[0].id})}" class="card"
+                           style="width: 18rem; text-decoration: none;">
+                            <img th:src="@{'/imagenes/' + ${productosNuevos[0].imagenes[0].rutaImagen}}"
+                                 class="card-img-top" alt="Imagen del Producto">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${productosNuevos[0].nombreProducto}"></h5>
+                                <p class="card-text">
+                                    <strong th:text="#{inicio.price_label}"></strong>
+                                    <span th:text="${#numbers.formatDecimal(productosNuevos[0].precios[0].valor, 1, 2) + ' €'}"></span><br>
+                                    <strong th:text="#{inicio.supermarket_label}"></strong>
+                                    <span th:text="${productosNuevos[0].precios[0].supermercado.nombreSuper + ' (' + productosNuevos[0].precios[0].supermercado.municipio + ')'}">Nombre del Supermercado (Municipio)</span>
+                                </p>
+                            </div>
+                        </a>
+                        <!-- Producto 2 -->
+                        <a th:href="@{/productos/detalles/{id}(id=${productosNuevos[1].id})}" class="card"
+                           style="width: 18rem; text-decoration: none;">
+                            <img th:src="@{'/imagenes/' + ${productosNuevos[1].imagenes[0].rutaImagen}}"
+                                 class="card-img-top" alt="Imagen del Producto">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${productosNuevos[1].nombreProducto}"></h5>
+                                <p class="card-text">
+                                    <strong th:text="#{inicio.price_label}"></strong>
+                                    <span th:text="${#numbers.formatDecimal(productosNuevos[1].precios[0].valor, 1, 2) + ' €'}"></span><br>
+                                    <strong th:text="#{inicio.supermarket_label}"></strong>
+                                    <span th:text="${productosNuevos[1].precios[0].supermercado.nombreSuper + ' (' + productosNuevos[1].precios[0].supermercado.municipio + ')'}">Nombre del Supermercado (Municipio)</span>
+                                </p>
+                            </div>
+                        </a>
+                        <!-- Producto 3 -->
+                        <a th:href="@{/productos/detalles/{id}(id=${productosNuevos[2].id})}" class="card"
+                           style="width: 18rem; text-decoration: none;">
+                            <img th:src="@{'/imagenes/' + ${productosNuevos[2].imagenes[0].rutaImagen}}"
+                                 class="card-img-top" alt="Imagen del Producto">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${productosNuevos[2].nombreProducto}"></h5>
+                                <p class="card-text">
+                                    <strong th:text="#{inicio.price_label}"></strong>
+                                    <span th:text="${#numbers.formatDecimal(productosNuevos[2].precios[0].valor, 1, 2) + ' €'}"></span><br>
+                                    <strong th:text="#{inicio.supermarket_label}"></strong>
+                                    <span th:text="${productosNuevos[2].precios[0].supermercado.nombreSuper + ' (' + productosNuevos[2].precios[0].supermercado.municipio + ')'}">Nombre del Supermercado (Municipio)</span>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sección de Descripción -->
+    <section id="description" class="container my-5">
+        <h2 th:text="#{inicio.about_us}"></h2>
+        <p th:text="#{inicio.description_part1}"></p>
+        <p th:text="#{inicio.description_part2}"></p>
+    </section>
+
+    <!-- Sección de Ubicación -->
+    <section id="location" class="container my-5">
+        <h2 th:text="#{inicio.where_we_are}"></h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p th:text="#{inicio.location_description}"></p>
+                <address>
+                    <strong th:text="#{inicio.company_name}"></strong><br>
+                    <span th:text="#{inicio.address}"></span><br>
+                    <span th:text="#{inicio.city_country}"></span><br>
+                    <span th:text="#{inicio.email}"></span><br>
+                    <span th:text="#{inicio.phone}"></span>
+                </address>
+            </div>
+            <div class="col-md-6">
+                <div class="map-container">
+                    <a th:href="#{inicio.map_link}" target="_blank">
+                        <img src="/img/mapa.png" alt="Mapa" class="img-fluid"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

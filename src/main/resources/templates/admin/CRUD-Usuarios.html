@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es"><head>
+
+    <title th:text="#{user.list.title}">Lista Usuarios</title>
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container mt-4" layout:fragment="content">
+    <h1 th:text="#{user.list.header}">Lista de Usuarios</h1>
+    <a class="btn btn-primary" th:href="@{/admin/usuarios/agregar}" th:text="#{user.list.create}">Crear Usuario</a>
+    <div class="container">
+        <div th:replace="~{fragments/usuario/tablaAdminUsuarios :: tablaAdminUsuarios}"></div>
+    </div>
+</div>
+</body>
+</html>
